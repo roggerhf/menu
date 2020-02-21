@@ -21,22 +21,12 @@
         <link href="bulma-0.8.0/css/bulma.min.css" rel="stylesheet" type="text/css" />
         <style type="text/css">
 
-        @media only screen and (min-width: 800px) {
-            .modal-card, .modal-content {
-
-            overflow: auto;
-            position: relative;
-            width: calc(40%);
-            height: calc(70%);
-            }
-        }
+        
 
         .trorange { background: white; }
         .is-success-light { background: #effaf3; }
-
-
-        
-
+        .is-primary-light { background: #ebfffc; }
+        .is-warning-light { background: #fffbeb; }
 
         
 </style>

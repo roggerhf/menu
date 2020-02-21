@@ -21,7 +21,7 @@ class RestauranteController extends Controller
     B.cMenu, A.nCostoMenu,
     C.cRefresco, A.nCostoRefresco,
     (A.nCostoMenu + A.nCostoRefresco) as costoTotalMenu,
-    D.idEstadoMenu, D.cDescripcion
+    A.idEstado, D.cDescripcion
     FROM orden A
     left join menu B on B.idMenu = A.idMenu
     left join refresco C on C.idRefresco = A.idRefresco
