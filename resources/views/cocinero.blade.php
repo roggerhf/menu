@@ -15,8 +15,10 @@
       <tbody id="tabla_menu">
       @foreach($dataMenu as $item)
 
-      @if($item->idEstado == 3)
-      	<tr class="is-success-light" id="tr_{{$item->idOrden}}">
+      @if($item->idEstado == 2)
+      	<tr class="is-warning-light" id="tr_{{$item->idOrden}}">
+      @elseif($item->idEstado == 3)
+        <tr class="is-success-light" id="tr_{{$item->idOrden}}">
       @else
       <tr class="trorange" id="tr_{{$item->idOrden}}">
       @endif
