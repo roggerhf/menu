@@ -33,6 +33,7 @@
 
         .trorange { background: white; }
         .is-success-light { background: #effaf3; }
+        .is-success { background: #48c774; }
 
 
         
@@ -418,6 +419,66 @@
                     });
         }
 
+        function fnAtender(orden,estado)
+      {
+        var token = $("#token").val();
+
+            $.ajax({ //Process the form using $.ajax()
+                        type      : 'POST', //Method type
+                        url       : 'cambioEstado', //Your form processing file URL
+                        headers   : {'X-CSRF-TOKEN':token},
+                        data      : { 'orden': orden,'estado': estado}, //Forms name
+                        dataType  : 'json',
+                        success   : function(data) {
+                                        if (data.success) { //If fails
+
+                                            //alert("rpta->"+data.mensaje);
+                                            fnCambioEstado(data.orden, data.estado);
+
+                                        }
+                                        else {
+                                                alert(data.mensaje);
+                                        }
+                                    }
+                    });
+      }
+
+      function fnCambioEstado(orden,estado)
+      {
+        if(estado == 2) //atencion
+        {
+          $("#tdEstado_"+orden).html("En Atencion");
+          $("#span_"+orden).html("Servido");
+          $("#span_"+orden).attr("onclick","fnAtender("+orden+",3)");
+          $("#span_"+orden).attr("class","tag is-warning");
+        }
+
+        if(estado == 3) //para Servir
+        {
+          
+          $("#tr_"+orden).attr("class","is-success-light");
+          $("#tdEstado_"+orden).html("Para Servir");
+          $("#span_"+orden).remove();          
+        }
+
+        if(estado == 4) //Entregado
+        {
+          
+          $("#tr_"+orden).attr("class","is-primary-light");
+          $("#tdEstado_"+orden).html("Entregado");
+          $("#span_"+orden).html("Cobrar");
+          $("#span_"+orden).attr("onclick","fnAtender("+orden+",5)");
+          $("#span_"+orden).attr("class","tag is-dark");          
+        }
+
+        if(estado == 5) //Conforme
+        {
+          
+          $("#tr_"+orden).attr("class","is-success");
+          $("#tdEstado_"+orden).html("Conforme");
+          $("#span_"+orden).remove();
+        }
+      }
 
          $(document).ready(function() {
 
