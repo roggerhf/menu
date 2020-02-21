@@ -40,7 +40,7 @@
             $("#encabezado_modal").html('Atencion Mesa:'+num);
             $("#tabla_menu").html('');
             
-            $('#modalColegiados').modal('show');
+            $('#modalPedidos').modal('show');
         }
         function readSelecOption()
         {
@@ -118,7 +118,8 @@
                         success   : function(data) {
                                         if (data.success) { //If fails
 
-                                            alert('Registro Correcto');
+                                            alert('Su pedido se ha registrado correctamente');
+                                            $('#modalPedidos').modal('hide');
                                             
                                         }
                                         else {
@@ -141,7 +142,6 @@
                         success   : function(data) {
                                         if (data.success) { //If fails
 
-                                            //alert("rpta->"+data.mensaje);
                                             fnCambioEstado(data.orden, data.estado);
 
                                         }

@@ -186,7 +186,7 @@
 
         </div>
 
-        <div class="modal" id="modalColegiados" role="dialog" >
+        <div class="modal" id="modalPedidos" role="dialog" >
               <div class="modal-background"></div>
       <div class="modal-card">
         <header class="modal-card-head">
